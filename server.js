@@ -90,7 +90,8 @@ class Server {
 
         // redirect all others to the index (HTML5 history)
         app.all('/*', (req, res) => {
-            res.sendFile(__dirname + '/src/index.html');
+            //res.sendFile(__dirname + '/src/index.html');
+            res.sendFile(__dirname + '/public/index.html');
         });
     }
 

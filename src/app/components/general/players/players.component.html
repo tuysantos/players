@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>List of Players</h1>
+        </div>
+    </div>
+    <fieldset class="fieldset-formated">
+        <legend class="legend-formated">Database Search</legend>
+        <br>
+        <app-players-search (searchChanged)="searchData($event)"></app-players-search>
+        <br>
+    </fieldset>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="navbar">
+                <br><br>
+                <fieldset class="fieldset-formated">
+                    <legend class="legend-formated">Grid Filter</legend>
+                    <br>
+                    <app-filter-text [label]="label" 
+                            [recordsFound]="recordsFound" 
+                            [newSaerch]="newSaerch" 
+                            (changed)="filterChanged($event)"></app-filter-text>
+                    <br>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <app-players-grid [players]="filteredPlayers"></app-players-grid>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <app-pagination [totalItems]="totalRecords" 
+            [pageSize]="pageSize" 
+            (pageChanged)="pageChanged($event)"></app-pagination>
+        </div>
+    </div>
+
+</div>

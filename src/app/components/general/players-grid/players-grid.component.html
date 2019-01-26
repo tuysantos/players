@@ -1,0 +1,36 @@
+
+    <div class="grid-container">
+        <div class="col-sm-12">
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr class="sorter-wrapper">
+                            <th (click)="sort('firstName')">First Name 
+                                <span class="sorter glyphicon glyphicon-sort"></span>
+                            </th>
+                            <th (click)="sort('lastName')">Last Name
+                                <span class="sorter glyphicon glyphicon-sort"></span>
+                            </th>
+                            <th (click)="sort('position')">Position
+                                <span class="sorter glyphicon glyphicon-sort"></span>
+                            </th>
+                            <th (click)="sort('nationality')">Nationality
+                                <span class="sorter glyphicon glyphicon-sort"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let player of players">
+                            <td>{{ player.firstName | trim }}</td>
+                            <td>{{ player.lastName | trim }}</td>
+                            <td>{{ player.position }}</td>
+                            <td>{{ player.nationality | trim }}</td>
+                        </tr>
+                        <tr *ngIf="!players.length">
+                            <td colspan="4">No Records Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

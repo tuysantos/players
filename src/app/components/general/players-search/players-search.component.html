@@ -4,16 +4,16 @@
         <span class="obj-align spacer" >Search Type:</span>
 
         <span class="obj-align spacer" *ngFor="let searchType of model.searchTypes; let idx = index">
-            <input type="radio" 
+            <input type="radio" id="searchTypes"
                 name="searchTypes" 
                 [checked]="idx === 0" 
                 [value]="searchType.value" 
                 (change)="onSelectionChange(searchType.value)">{{searchType.description}}
         </span>
         
-        <input type="text" class="obj-align spacer" name="searchText" [(ngModel)]="model.searchText" [hidden]="selectedSearchType == 1" />
+        <input type="text" id="searchText" class="obj-align spacer" name="searchText" [(ngModel)]="model.searchText" [hidden]="selectedSearchType == 1" />
 
-        <button type="button" class="obj-align spacer btn btn-primary" (click)="searchCondition()" [disabled]="model.searchText.length == 0 && selectedSearchType == 2">
+        <button type="button" id="btnSearch" class="obj-align spacer btn btn-primary" (click)="searchCondition()" [disabled]="model.searchText.length == 0 && selectedSearchType == 2">
             <span class="glyphicon glyphicon-search">&nbsp;Search</span>
         </button>
     </div>

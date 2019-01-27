@@ -8,4 +8,20 @@ export class AppPage {
   getTitleText() {
     return element(by.css('app-root h1')).getText();
   }
+
+  getSearchButton(){
+    return element(by.id('btnSearch'));
+  }
+
+  getSearchTextBox(){
+    return element(by.id('searchText'));
+  }
+
+  getSearchType(){
+    return element(by.id('searchTypes'));
+  }
+
+  getFilterText(){
+    return element(by.id('txtFilter'));
+  }
 }

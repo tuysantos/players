@@ -22,4 +22,12 @@ describe('PaginationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create 3 pages', () => {
+    component.totalItems = 27;
+    component.pageSize = 10;
+    component.update();
+    fixture.detectChanges();
+    expect(component.totalPages).toEqual(3);
+  });
 });

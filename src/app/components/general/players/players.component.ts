@@ -43,8 +43,6 @@ import { StorageService } from "../../../services/storage.service";
                 this.totalRecords = response.totalRecords;
                 this.grandTotalRecords = response.totalRecords;
                 this.recordsFound = this.grandTotalRecords > 0;
-                //console.log('this.recordsFound', this.recordsFound)
-                //console.log('this.totalRecords', this.totalRecords)
             },
             (err: any) => console.log(err),
             () => console.log('getPlayersWithPagination() retrieved players'));
@@ -58,8 +56,6 @@ import { StorageService } from "../../../services/storage.service";
                 this.totalRecords = response.totalRecords;
                 this.grandTotalRecords = response.totalRecords;
                 this.recordsFound = this.grandTotalRecords > 0;
-                //console.log('this.recordsFound', this.recordsFound)
-                //console.log('this.totalRecords', this.totalRecords)
             },
             (err: any) => console.log(err),
             () => console.log('getPlayersWithPagination() retrieved players'));
@@ -68,7 +64,6 @@ import { StorageService } from "../../../services/storage.service";
     filterChanged(filterText: string) {
         if (filterText && this.players) {
             let props = ['firstName', 'lastName', 'position', 'nationality'];
-            //console.log('this.players.length = ' + this.players.length)
             this.filteredPlayers = this.dataFilter.filter(this.players, props, filterText);
             this.totalRecords = this.filteredPlayers.length;
         }
@@ -88,7 +83,6 @@ import { StorageService } from "../../../services/storage.service";
       }
 
     searchData(criteria: ISearchCriteria): void {
-        //console.log('search Criteria', criteria);
         this.searchFilter = criteria;
         this.newSaerch++;
         if(criteria.type === 1){

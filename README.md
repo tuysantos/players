@@ -10,7 +10,7 @@ The database is MongoDB.
 
 The application display a lista of players with a ability to filter the list by first name, last name, position or nationality.
 
-In order to test the Restful End Point alone you must add a header token 'x-access-token' to 'YWRtaW46dGVzdDEyMw=='.
+In order to test the Restful API End Point alone, you must add a header attribute 'x-access-token' with value 'YWRtaW46dGVzdDEyMw=='.
 
 ## Software Requirements To Run
 

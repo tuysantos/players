@@ -1,6 +1,6 @@
 <div class="spacer">
     {{label}}:
-    <input type="text" name="filter"
+    <input type="text" name="filter" id="txtFilter"
             [(ngModel)]="model.filter" 
             (keyup)="filterChanged($event)" [disabled]="!recordsFound" />
     

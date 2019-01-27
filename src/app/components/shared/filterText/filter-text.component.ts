@@ -16,7 +16,6 @@ export class FilterTextComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(){
-    //console.log('new search event')
     this.resetFilter();
   }
 

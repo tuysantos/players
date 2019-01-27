@@ -25,6 +25,7 @@ describe('workspace-project App', () => {
     rockBtn.click();
 
     let imgView = page.getMyPlay().then(res => {
+      
       return res;
     });
 

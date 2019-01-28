@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser } from 'protractor';
+import { browser, by } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,32 +8,45 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  /*it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to players!');
-  });*/
-
-  it('should return all players', ()=>{
+  it('should have default status', ()=>{
     page.navigateTo();
     let btnSearch = page.getSearchButton();
+    let radioBtn = page.getSearchType(0);
+    let filter = page.getFilterText();
+
+    expect(radioBtn.getAttribute('value')).toEqual('1');
+    expect(btnSearch.isEnabled()).toBe(true);
+    expect(filter.isEnabled()).toBe(false);
+    expect(filter.getAttribute('value')).toEqual('');
+  });
+
+  it('should check all players', ()=>{
+    page.navigateTo();
+    let btnSearch = page.getSearchButton();
+    let radioBtn = page.getSearchType(0);
+
     btnSearch.click();
+    browser.sleep(4000);
 
+    expect(radioBtn.getAttribute('value')).toEqual('1');
+    expect(btnSearch.isEnabled()).toBe(true); 
+  });
 
-    /*let playAgainBtn = page.getPlayButton();
-    playAgainBtn.click();
-    let rockBtn = page.getImgButton('imgRock');
-    rockBtn.click();
-
-    let imgView = page.getMyPlay().then(res => {
-      
-      return res;
+  it('should check criteria radio type', ()=>{
+    page.navigateTo();
+    let btnSearch = page.getSearchButton();
+    let txtSearch = page.getSearchTextBox();
+    let radioBtn = page.getSearchType(1);
+    
+    radioBtn.click().then(function () {
+      browser.waitForAngular();
+      txtSearch.sendKeys('An');
+      btnSearch.click();
     });
 
-    let endGameBtn = page.getEndGameButton();
-    endGameBtn.click(); */
-    browser.pause(10000);
-    expect(1).toEqual(1);
-    
+    browser.sleep(8000);
+    expect(btnSearch.isEnabled()).toBe(true); 
+    expect(txtSearch.getAttribute('value')).toEqual('An');
   });
 
 });

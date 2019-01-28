@@ -245,7 +245,7 @@ var PlayersGridComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <span class=\"obj-align spacer\" >Search Type:</span>\r\n\r\n        <span class=\"obj-align spacer\" *ngFor=\"let searchType of model.searchTypes; let idx = index\">\r\n            <input type=\"radio\" \r\n                name=\"searchTypes\" \r\n                [checked]=\"idx === 0\" \r\n                [value]=\"searchType.value\" \r\n                (change)=\"onSelectionChange(searchType.value)\">{{searchType.description}}\r\n        </span>\r\n        \r\n        <input type=\"text\" class=\"obj-align spacer\" name=\"searchText\" [(ngModel)]=\"model.searchText\" [hidden]=\"selectedSearchType == 1\" />\r\n\r\n        <button type=\"button\" class=\"obj-align spacer btn btn-primary\" (click)=\"searchCondition()\" [disabled]=\"model.searchText.length == 0 && selectedSearchType == 2\">\r\n            <span class=\"glyphicon glyphicon-search\">&nbsp;Search</span>\r\n        </button>\r\n    </div>\r\n</div>"
+module.exports = "\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n        <span class=\"obj-align spacer\" >Search Type:</span>\r\n\r\n        <span class=\"obj-align spacer\" *ngFor=\"let searchType of model.searchTypes; let idx = index\">\r\n            <input type=\"radio\" id=\"searchTypes\"\r\n                name=\"searchTypes\" \r\n                class=\"class{{idx}}\"\r\n                [checked]=\"idx === 0\" \r\n                [value]=\"searchType.value\" \r\n                (change)=\"onSelectionChange(searchType.value)\">{{searchType.description}}\r\n        </span>\r\n        \r\n        <input type=\"text\" id=\"searchText\" class=\"obj-align spacer\" name=\"searchText\" [(ngModel)]=\"model.searchText\" [hidden]=\"selectedSearchType == 1\" />\r\n\r\n        <button type=\"button\" id=\"btnSearch\" class=\"obj-align spacer btn btn-primary\" (click)=\"searchCondition()\" [disabled]=\"model.searchText.length == 0 && selectedSearchType == 2\">\r\n            <span class=\"glyphicon glyphicon-search\">&nbsp;Search</span>\r\n        </button>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -379,8 +379,6 @@ var PlayersComponent = /** @class */ (function () {
             _this.totalRecords = response.totalRecords;
             _this.grandTotalRecords = response.totalRecords;
             _this.recordsFound = _this.grandTotalRecords > 0;
-            //console.log('this.recordsFound', this.recordsFound)
-            //console.log('this.totalRecords', this.totalRecords)
         }, function (err) { return console.log(err); }, function () { return console.log('getPlayersWithPagination() retrieved players'); });
     };
     PlayersComponent.prototype.findPlayersWithPagination = function (searchCriteria, page) {
@@ -392,14 +390,11 @@ var PlayersComponent = /** @class */ (function () {
             _this.totalRecords = response.totalRecords;
             _this.grandTotalRecords = response.totalRecords;
             _this.recordsFound = _this.grandTotalRecords > 0;
-            //console.log('this.recordsFound', this.recordsFound)
-            //console.log('this.totalRecords', this.totalRecords)
         }, function (err) { return console.log(err); }, function () { return console.log('getPlayersWithPagination() retrieved players'); });
     };
     PlayersComponent.prototype.filterChanged = function (filterText) {
         if (filterText && this.players) {
             var props = ['firstName', 'lastName', 'position', 'nationality'];
-            //console.log('this.players.length = ' + this.players.length)
             this.filteredPlayers = this.dataFilter.filter(this.players, props, filterText);
             this.totalRecords = this.filteredPlayers.length;
         }
@@ -417,7 +412,6 @@ var PlayersComponent = /** @class */ (function () {
         }
     };
     PlayersComponent.prototype.searchData = function (criteria) {
-        //console.log('search Criteria', criteria);
         this.searchFilter = criteria;
         this.newSaerch++;
         if (criteria.type === 1) {
@@ -451,7 +445,7 @@ var PlayersComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"spacer\">\n    {{label}}:\n    <input type=\"text\" name=\"filter\"\n            [(ngModel)]=\"model.filter\" \n            (keyup)=\"filterChanged($event)\" [disabled]=\"!recordsFound\" />\n    \n</div>"
+module.exports = "<div class=\"spacer\">\n    {{label}}:\n    <input type=\"text\" name=\"filter\" id=\"txtFilter\"\n            [(ngModel)]=\"model.filter\" \n            (keyup)=\"filterChanged($event)\" [disabled]=\"!recordsFound\" />\n    \n</div>"
 
 /***/ }),
 
@@ -496,7 +490,6 @@ var FilterTextComponent = /** @class */ (function () {
         this.changed = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     FilterTextComponent.prototype.ngOnChanges = function () {
-        //console.log('new search event')
         this.resetFilter();
     };
     FilterTextComponent.prototype.filterChanged = function (event) {

@@ -5,10 +5,6 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getTitleText() {
-    return element(by.css('app-root h1')).getText();
-  }
-
   getSearchButton(){
     return element(by.id('btnSearch'));
   }
@@ -17,8 +13,8 @@ export class AppPage {
     return element(by.id('searchText'));
   }
 
-  getSearchType(){
-    return element(by.id('searchTypes'));
+  getSearchType(type: number){
+    return element(by.className('class' + type));
   }
 
   getFilterText(){
